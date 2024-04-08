@@ -152,7 +152,10 @@ struct TranslationView: View {
         loadHistory()
         let translations = [
             "Hello": ["German": "Hallo", "Spanish": "Hola"],
-            "How Are You": ["German": "Wie geht es dir", "Spanish": "Como estas"]
+            "How Are You": ["German": "Wie geht es dir", "Spanish": "Cómo estás"],
+            "Airplane": ["German": "Flugzeug", "Spanish": "Avión"],
+            "Goodbye": ["German": "Auf Wiedersehen", "Spanish": "Adiós"],
+            "Thank You": ["German": "Danke", "Spanish": "Gracias"]
         ]
         
         if let translation = translations[inputText]?[targetLanguage]{
