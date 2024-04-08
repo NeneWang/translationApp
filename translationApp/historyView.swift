@@ -1,12 +1,11 @@
 import SwiftUI
 
-// Modify the Translation struct to conform to Codable
+
 struct Translation: Identifiable, Codable {
     let id: UUID
     let originalText: String
     let translatedText: String
 
-    // Provide a default value for id when initializing a new Translation.
     init(id: UUID = UUID(), originalText: String, translatedText: String) {
         self.id = id
         self.originalText = originalText
@@ -47,14 +46,12 @@ struct HistoryView: View {
         .onAppear(perform: loadHistory)
     }
 
-    // Function to save the current history to UserDefaults.
     private func saveHistory() {
         if let encoded = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(encoded, forKey: "TranslationHistory")
         }
     }
 
-    // Function to load the history from UserDefaults.
     private func loadHistory() {
         if let savedTranslations = UserDefaults.standard.data(forKey: "TranslationHistory"),
            let decodedTranslations = try? JSONDecoder().decode([Translation].self, from: savedTranslations) {
@@ -62,14 +59,12 @@ struct HistoryView: View {
         }
     }
 
-    // Function to clear the translation history.
     private func clearHistory() {
         history.removeAll()
         saveHistory()
     }
 }
 
-// Preview Provider
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryView()

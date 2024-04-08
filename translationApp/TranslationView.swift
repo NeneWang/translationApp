@@ -16,6 +16,9 @@ struct TranslationView: View {
     @State private var outputText = ""
     @State private var history: [Translation] = []
     
+    @State private var inputCount = 0
+    @State private var outputCount = 0
+    
     let language = ["English", "German", "Spanish", "Italian", "Rusia", "Arabic"]
     
     var body: some View {
@@ -31,8 +34,6 @@ struct TranslationView: View {
                             .font(.system(size: 25))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         Spacer()
-                        
-//                        Image(systemName: "bell.bage")
                     }
                     VStack{
                         Rectangle()
@@ -75,7 +76,7 @@ struct TranslationView: View {
                                 Rectangle().frame(width: 373, height: 1)
                                 
                                 HStack{
-                                    Text("0/500")
+                                    Text("\(inputCount)/500")
                                         .font(Font.custom("Inter", size: 20))
                                         .foregroundColor(.white.opacity(0.43))
                                         .offset(x: -90, y: 60)
@@ -114,7 +115,7 @@ struct TranslationView: View {
                                 Rectangle().frame(width: 373, height: 1)
                                 
                                 HStack{
-                                    Text("0/500")
+                                    Text("\(outputCount)/500")
                                         .font(Font.custom("Inter", size: 20))
                                         .foregroundColor(.white.opacity(0.43))
                                         .offset(x: -90, y: 60)
@@ -146,9 +147,13 @@ struct TranslationView: View {
         let targetLanguage = language[targetLanguageIndex]
         
         translationWithAPI(inputText: inputText, sourceLanguage: sourceLanguage, targetLanguage: targetLanguage)
+        
     }
     
     func translationWithAPI(inputText: String, sourceLanguage: String, targetLanguage: String){
+        inputCount = inputText.count
+        
+        
         loadHistory()
         let translations = [
             "Hello": ["German": "Hallo", "Spanish": "Hola"],
@@ -161,11 +166,11 @@ struct TranslationView: View {
         if let translation = translations[inputText]?[targetLanguage]{
             outputText = translation
             addToHistory(originalText: inputText, translated: translation)
+            outputCount = outputText.count
         }else{
             outputText = "Translation not found."
+            outputCount = outputText.count
         }
-        
-        
         
     }
     
