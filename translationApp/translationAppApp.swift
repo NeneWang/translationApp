@@ -11,7 +11,17 @@ import SwiftUI
 struct translationAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Translate", systemImage: "textformat")
+                    }
+
+                HistoryView()
+                    .tabItem {
+                        Label("History", systemImage: "clock.arrow.circlepath")
+                    }
+            }
         }
     }
 }

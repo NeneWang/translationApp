@@ -1,21 +1,77 @@
-//
-//  historyView.swift
-//  translationApp
-//
-//  Created by Nene Wang  on 4/8/24.
-//
-
-import Foundation
 import SwiftUI
 
-struct HistoryView: View {
-    var body: some View {
-       TranslationView()
+// Modify the Translation struct to conform to Codable
+struct Translation: Identifiable, Codable {
+    let id: UUID
+    let originalText: String
+    let translatedText: String
+
+    // Provide a default value for id when initializing a new Translation.
+    init(id: UUID = UUID(), originalText: String, translatedText: String) {
+        self.id = id
+        self.originalText = originalText
+        self.translatedText = translatedText
     }
 }
 
+struct HistoryView: View {
+    @State private var history: [Translation] = []
 
+    var body: some View {
+        NavigationView {
+            VStack {
+                List(history) { translation in
+                    VStack(alignment: .leading) {
+                        Text("Original: \(translation.originalText)")
+                            .fontWeight(.bold)
+                        Text("Translated: \(translation.translatedText)")
+                            .foregroundColor(.gray)
+                    }
+                }
+                .navigationTitle("Translation History")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: clearHistory) {
+                            Text("Clear All")
+                        }
+                    }
+                }
 
-#Preview {
-    HistoryView()
+//                Button("Add Dummy Translation") {
+//                    let newTranslation = Translation(originalText: "Hello", translatedText: "Hola")
+//                    history.append(newTranslation)
+//                    saveHistory()
+//                }
+            }
+        }
+        .onAppear(perform: loadHistory)
+    }
+
+    // Function to save the current history to UserDefaults.
+    private func saveHistory() {
+        if let encoded = try? JSONEncoder().encode(history) {
+            UserDefaults.standard.set(encoded, forKey: "TranslationHistory")
+        }
+    }
+
+    // Function to load the history from UserDefaults.
+    private func loadHistory() {
+        if let savedTranslations = UserDefaults.standard.data(forKey: "TranslationHistory"),
+           let decodedTranslations = try? JSONDecoder().decode([Translation].self, from: savedTranslations) {
+            history = decodedTranslations
+        }
+    }
+
+    // Function to clear the translation history.
+    private func clearHistory() {
+        history.removeAll()
+        saveHistory()
+    }
+}
+
+// Preview Provider
+struct HistoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        HistoryView()
+    }
 }

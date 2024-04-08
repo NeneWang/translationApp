@@ -2,7 +2,7 @@
 
 Submitted by: Nelson Wang
 
-Time spent: **10** hours spent in total
+Time spent: **20** hours spent in total
 
 ## Required Features
 
@@ -10,8 +10,8 @@ The following **required** functionality is completed:
 
 - [x] Users open the app to a TranslationMe home page with a place to enter a word, phrase or sentence, a button to translate, and another field that should initially be empty
 - [x] When users tap translate, the word written in the upper field translates in the lower field. The requirement is only that you can translate from one language to another.
-- [ ] A history of translations can be stored (in a scroll view in the same screen, or a new screen)
-- [ ] The history of translations can be erased
+- [x] A history of translations can be stored (in a scroll view in the same screen, or a new screen)
+- [x] The history of translations can be erased
  
 The following **optional** features are implemented:
 
@@ -20,7 +20,9 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] List anything else that you can get done to improve the app functionality!
+
+[Hack MD File](https://hackmd.io/C56E3nU9R--QSdDyn2hpGA?both)
 
 ## Video Walkthrough
 
@@ -46,4 +48,3 @@ Describe any challenges encountered while building the app.
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[Hack MD File](https://hackmd.io/C56E3nU9R--QSdDyn2hpGA?both)

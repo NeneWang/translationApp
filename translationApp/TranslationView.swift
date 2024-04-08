@@ -14,6 +14,7 @@ struct TranslationView: View {
     @State private var targetLanguageIndex = 1
     @State private var inputText = ""
     @State private var outputText = ""
+    @State private var history: [Translation] = []
     
     let language = ["English", "German", "Spanish", "Italian", "Rusia", "Arabic"]
     
@@ -148,7 +149,7 @@ struct TranslationView: View {
     }
     
     func translationWithAPI(inputText: String, sourceLanguage: String, targetLanguage: String){
-        
+        loadHistory()
         let translations = [
             "Hello": ["German": "Hallo", "Spanish": "Hola"],
             "How Are You": ["German": "Wie geht es dir", "Spanish": "Como estas"]
@@ -156,9 +157,31 @@ struct TranslationView: View {
         
         if let translation = translations[inputText]?[targetLanguage]{
             outputText = translation
+            addToHistory(originalText: inputText, translated: translation)
         }else{
             outputText = "Translation not found."
         }
+        
+        
+        
+    }
+    
+    
+    private func addToHistory(originalText: String, translated: String) {
+        let newTranslation = Translation(originalText: originalText, translatedText: translated)
+        history.append(newTranslation)
+        
+        if let encoded = try? JSONEncoder().encode(history) {
+            UserDefaults.standard.set(encoded, forKey: "TranslationHistory")
+        }
+    }
+
+    private func loadHistory() {
+        if let savedTranslations = UserDefaults.standard.data(forKey: "TranslationHistory"),
+           let decodedTranslations = try? JSONDecoder().decode([Translation].self, from: savedTranslations) {
+            history = decodedTranslations
+        }
+        
         
     }
 }
