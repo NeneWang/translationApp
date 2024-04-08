@@ -12,6 +12,7 @@
 		A9416CE42BC1095D007E773E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9416CE32BC1095D007E773E /* Assets.xcassets */; };
 		A9416CE72BC1095D007E773E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9416CE62BC1095D007E773E /* Preview Assets.xcassets */; };
 		A9416CEE2BC1098C007E773E /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9416CED2BC1098C007E773E /* TranslationView.swift */; };
+		A9416CF02BC3B69A007E773E /* historyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9416CEF2BC3B69A007E773E /* historyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		A9416CE32BC1095D007E773E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9416CE62BC1095D007E773E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A9416CED2BC1098C007E773E /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		A9416CEF2BC3B69A007E773E /* historyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				A9416CED2BC1098C007E773E /* TranslationView.swift */,
 				A9416CE32BC1095D007E773E /* Assets.xcassets */,
 				A9416CE52BC1095D007E773E /* Preview Content */,
+				A9416CEF2BC3B69A007E773E /* historyView.swift */,
 			);
 			path = translationApp;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9416CEE2BC1098C007E773E /* TranslationView.swift in Sources */,
+				A9416CF02BC3B69A007E773E /* historyView.swift in Sources */,
 				A9416CE22BC1095B007E773E /* ContentView.swift in Sources */,
 				A9416CE02BC1095B007E773E /* translationAppApp.swift in Sources */,
 			);

@@ -24,10 +24,11 @@ struct TranslationView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     HStack{
+                        
+                        Spacer()
                         Text("Text Translation")
                             .font(.system(size: 25))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        
                         Spacer()
                         
 //                        Image(systemName: "bell.bage")
